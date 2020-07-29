@@ -1,0 +1,38 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block body %}
+{% include 'homepage/navbar.html'%}
+<div class="container mt-5">
+    <h2>Login</h2>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {% if messages.tags == error %} alert-danger {% endif %} alert-dismissible fade show"
+         role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input name="username" type="text" class="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            <small id="emailHelp" class="form-text text-muted">We recommed to create 8+ character to make your account
+                Super-Secure.</small>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+</div>
+{% include 'homepage/footer.html'%}
+{% endblock %}

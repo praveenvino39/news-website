@@ -1,0 +1,47 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% block body %}
+{% include 'homepage/navbar.html'%}
+<div class="mt-5">
+    <center>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show"
+             role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+        {% endif %}<h1>Headlines</h1></center>
+</div>
+<div class="container mb-5">
+    <div class="row m-rl--1">
+        {% for article in content %}
+        <div class="col-sm-6 col-lg-4 p-rl-1 p-b-2">
+            <div class="bg-img1 size-a-12 how1 pos-relative" style="background-image: url({{article.urlToImage}});">
+                <a href="{% if article.urlToImage %}{% url 'detail' article.id search_term %}{% else %} {{article.url}}{% endif %}"
+                   class="dis-block how1-child1 trans-03"></a>
+
+                <div class="flex-col-e-s s-full p-rl-25 p-tb-11">
+                    <a href="{{article.url}}"
+                       class="dis-block how1-child2 f1-s-2 cl0 bo-all-1 bocl0 hov-btn1 trans-03 p-rl-5 p-t-2">
+                        {{article.source.name}}
+                    </a>
+
+                    <h3 class="how1-child2 m-t-10">
+                        <a href="{% if article.urlToImage %}{% url 'detail' article.id search_term %}{% else %} {{article.url}}{% endif %}"
+                           class="f1-m-1 cl0 hov-cl10 trans-03">
+                            {{article.title|truncatechars:60}}
+                        </a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% include 'homepage/footer.html'%}
+{% endblock %}
