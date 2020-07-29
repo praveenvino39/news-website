@@ -25,7 +25,7 @@ SECRET_KEY = '7w4$%4(7ki6g81d@!6u0!=)7z&ot2_=zcigc2$0d8je^^)_a68'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['snack-time-news.herokuapp.com']
 
 
 # Application definition
