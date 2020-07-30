@@ -146,27 +146,29 @@ def delete(request, id):
     return redirect('saved_list')
 
 def search(request):
-    weatherdata = requests.get('http://api.openweathermap.org/data/2.5/weather?q=chennai&appid=98025f7a1edae67852b8b2a15b858486')
-    weatherdata = json.loads(weatherdata.text)
-    weatherdata = weatherdata['main']
-    search_term = request.POST['search']
-    url = 'https://newsapi.org/v2/everything?q={}&apiKey=4c0a0778eb4b4e1aa06fa178a050c62f'.format(search_term)
-    response = requests.get(url)
-    response = json.loads(response.text)
-    response = response['articles']
-    high = int(weatherdata['temp_min'])
-    low = int(weatherdata['temp_max'])
-    high = high - 273
-    low = low - 273
-    articles = []
-    id = 0
-    for article in response:
-        article.update({'id': id})
-        articles.append(article)
-        id = id + 1
-    return render(request, 'homepage/search.html',
-                  {'content': response, 'high': high, 'low': low,'search_term': request.POST["search"],'search_term': search_term, 'meta_title': 'Snack Time News - {}'.format(search_term)})
-
+    if request.method == 'POST':
+        weatherdata = requests.get('http://api.openweathermap.org/data/2.5/weather?q=chennai&appid=98025f7a1edae67852b8b2a15b858486')
+        weatherdata = json.loads(weatherdata.text)
+        weatherdata = weatherdata['main']
+        search_term = request.POST['search']
+        url = 'https://newsapi.org/v2/everything?q={}&apiKey=4c0a0778eb4b4e1aa06fa178a050c62f'.format(search_term)
+        response = requests.get(url)
+        response = json.loads(response.text)
+        response = response['articles']
+        high = int(weatherdata['temp_min'])
+        low = int(weatherdata['temp_max'])
+        high = high - 273
+        low = low - 273
+        articles = []
+        id = 0
+        for article in response:
+            article.update({'id': id})
+            articles.append(article)
+            id = id + 1
+        return render(request, 'homepage/search.html',
+                      {'content': response, 'high': high, 'low': low,'search_term': request.POST["search"],'search_term': search_term, 'meta_title': 'Snack Time News - {}'.format(search_term)})
+    else:
+        return redirect('homepage')
 def search_detail(request, news_id,search_term):
     print(search_term)
     weatherdata = requests.get('http://api.openweathermap.org/data/2.5/weather?q=chennai&appid=98025f7a1edae67852b8b2a15b858486')

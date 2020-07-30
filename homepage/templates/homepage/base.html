@@ -6,8 +6,20 @@
   font-family: Algerian;
 }
 
+
+
 </style>
 <head>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'homepage/vendor/animsition/css/animsition.min.css' %}">
     <link rel="shortcut icon" href="{% static 'homepage/icons/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -28,50 +40,13 @@
     <title>{{meta_title}}</title>
 </head>
 <body class="animsition">
-<script src="{% static 'homepage/js/main.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
 {% block body %}
 {% endblock %}
 </body>
-<style>
-.loader {
-    -webkit-animation: load-out 1s;
-    animation: load-out 1s;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-}
-
-@-webkit-keyframes load-out {
-    from {
-        top: 0;
-        opacity: 1;
-    }
-
-    to {
-        top: 100%;
-        opacity: 0;
-    }
-}
-
-@keyframes load-out {
-    from {
-        top: 0;
-        opacity: 1;
-    }
-
-    to {
-        top: 100%;
-        opacity: 0;
-    }
-}
-</style>
+<script src="{% static 'homepage/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'homepage/vendor/animsition/js/animsition.min.js' %}"></script>
+<script src="{% static 'homepage/vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'homepage/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'homepage/vendor/bootstrap/js/tooltip.js' %}"></script>
+<script src="{% static 'homepage/js/main.js' %}"></script>
 </html>
