@@ -36,6 +36,9 @@ def homepage(request):
                   {'content': response, 'high': high, 'low': low, 'meta_title': 'Snack Time News - Homepage',
                    'search_term': 'homepage'})
 
+def about(request):
+    return render(request, 'homepage/about.html')
+
 
 def detail(request, news_id, search_term):
     weather_map_api = os.environ.get('WM_API')

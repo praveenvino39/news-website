@@ -44,7 +44,7 @@
                         Contact
                     </a>
 
-                    <a href="#" class="left-topbar-item">
+                    <a href="{% url 'about' %}" class="left-topbar-item">
                         About
                     </a>
                 </div>
@@ -62,6 +62,9 @@
                         </div>
                     </form>
                 </div>
+                <a href="{% url 'saved_list' %}" class="left-topbar-item">
+                    <h5>Saved</h5>
+                </a>
             </div>
         </div>
 
@@ -69,7 +72,8 @@
         <div class="wrap-header-mobile">
             <!-- Logo moblie -->
             <div class="logo-mobile">
-                <a href="{% url 'homepage' %}"><img width="30" height="30" src="{% static 'homepage/icons/logo.png' %}" alt="IMG-LOGO"> </a>
+                <a href="{% url 'homepage' %}"><img width="30" height="30" src="{% static 'homepage/icons/logo.png' %}"
+                                                    alt="IMG-LOGO"> </a>
             </div>
             <!-- Button show menu -->
             <div class="hamburger hamburger--squeeze m-r--8" onload="$('.menu-mobile').toggle();">
@@ -93,21 +97,30 @@
 						</span>
                 </li>
                 <li class="left-topbar">
-                    <a href="#" class="left-topbar-item">
+                    <a href="{% url 'about' %}" class="left-topbar-item">
                         About
                     </a>
 
                     <a href="#" class="left-topbar-item">
                         Contact
                     </a>
-
-                    <a href="#" class="left-topbar-item">
-                        Sing up
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'saved_list' %}" class="left-topbar-item">
+                        Saved
                     </a>
-
-                    <a href="#" class="left-topbar-item">
+                    <form method="POST" action="{% url 'logout'  %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="left-topbar-item">
                         Log in
                     </a>
+
+                    <a href="{% url 'signup' %}" class="left-topbar-item">
+                        Sign up
+                    </a>
+                    {% endif %}
                 </li>
                 <div style="width: 80%;">
                     <form method="POST" action="{% url 'search' %}">
@@ -119,6 +132,7 @@
                                 <i class="zmdi zmdi-search"></i>
                             </button>
                         </div>
+
                     </form>
                 </div>
             </ul>
