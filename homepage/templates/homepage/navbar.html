@@ -69,16 +69,17 @@
         </div>
 
         <!-- Header Mobile -->
-        <div class="wrap-header-mobile">
+        <div class="wrap-header-mobile" style="background-color: #222222;">
             <!-- Logo moblie -->
-            <div class="logo-mobile">
+            <div class="logo-mobile" >
                 <a href="{% url 'homepage' %}"><img width="30" height="30" src="{% static 'homepage/icons/logo.png' %}"
-                                                    alt="IMG-LOGO"> </a>
+                                                    alt="IMG-LOGO"></a>
+                                                    <h2 class="ml-5" style="color: white;">Snack time news</h2>
             </div>
             <!-- Button show menu -->
-            <div class="hamburger hamburger--squeeze m-r--8" onload="$('.menu-mobile').toggle();">
-					<span onclick="$('.menu-mobile').toggle();" class="hamburger-box">
-						<span class="hamburger-inner"></span>
+            <div class="hamburger hamburger--squeeze m-r--8" style="background-color: white;" onload="$('.menu-mobile').toggle();">
+					<span onclick="$('.menu-mobile').toggle();" style="color: white;" class="hamburger-box">
+						<span class="hamburger-inner" style="color: white;"></span>
 					</span>
             </div>
         </div>
